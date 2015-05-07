@@ -1,0 +1,77 @@
+parameters:
+    lp_factory.page_dynamic_router.class: LpFactory\Bundle\NestedSetRoutingBundle\Router\PageDynamicRouter
+    lp_factory.routing.generator.class: Symfony\Cmf\Component\Routing\ContentAwareGenerator
+    lp_factory.route_provider.class: LpFactory\Bundle\NestedSetRoutingBundle\Provider\PageRouteProvider
+    lp_factory.route_factory.class: LpFactory\Bundle\NestedSetRoutingBundle\Factory\PageRouteFactory
+    lp_factory.route_configuration.chain.class: LpFactory\Bundle\NestedSetRoutingBundle\Configuration\PageRouteConfigurationChain
+    lp_factory.routing.satinizer.chain.class: LpFactory\Bundle\NestedSetRoutingBundle\Satinizer\UrlSatinizerChain
+    lp_factory.routing.satinizer_format.class: LpFactory\Bundle\NestedSetRoutingBundle\Satinizer\UrlFormatSatinizer
+    lp_factory.routing.final_matcher.class: Symfony\Cmf\Component\Routing\NestedMatcher\UrlMatcher
+    lp_factory.route_strategy.single_tree.class: LpFactory\Bundle\NestedSetRoutingBundle\Strategy\SingleTreeStrategy
+
+services:
+    lp_factory.page_dynamic_router:
+        class: %lp_factory.page_dynamic_router.class%
+        arguments:
+            - @router.request_context
+            - @lp_factory.route_configuration.chain
+            - @lp_factory.route_provider
+            - @lp_factory.routing.final_matcher
+            - @lp_factory.routing.generator
+
+    lp_factory.routing.generator:
+        class: %lp_factory.routing.generator.class%
+        arguments:
+            - @lp_factory.route_provider
+            - @?logger
+
+    lp_factory.route_provider:
+        class: %lp_factory.route_provider.class%
+        arguments:
+            - @lp_factory.route_factory
+            - @lp_factory.routing.satinizer.chain
+            - @lp_factory.route_configuration.chain
+            - @lp_factory.route_strategy.single_tree
+
+    lp_factory.route_factory:
+        class: %lp_factory.route_factory.class%
+        arguments:
+            - @lp_factory.repository.page
+            - @lp_factory.route_strategy.single_tree
+
+    lp_factory.route_configuration.chain:
+        class: %lp_factory.route_configuration.chain.class%
+        arguments:
+            - %lpfactory.route_configuration.class%
+
+    lp_factory.routing.satinizer.chain:
+        class: %lp_factory.routing.satinizer.chain.class%
+
+    lp_factory.routing.satinizer_format:
+        class: %lp_factory.routing.satinizer_format.class%
+        tags:
+            - { name: lp_factory.routing.satinizer }
+
+    lp_factory.routing.matcher.dummy_collection:
+        class: Symfony\Component\Routing\RouteCollection
+        public: false
+
+    lp_factory.routing.matcher.dummy_context:
+        class: Symfony\Component\Routing\RequestContext
+        public: false
+
+    lp_factory.routing.final_matcher:
+        class: %lp_factory.routing.final_matcher.class%
+        arguments:
+            - @lp_factory.routing.matcher.dummy_collection
+            - @lp_factory.routing.matcher.dummy_context
+
+    lp_factory.route_strategy.abstract:
+        abstract: true
+        arguments:
+            - @lp_factory.repository.page
+
+    lp_factory.route_strategy.single_tree:
+        parent: lp_factory.route_strategy.abstract
+        class: %lp_factory.route_strategy.single_tree.class%
+

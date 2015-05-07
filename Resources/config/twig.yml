@@ -1,0 +1,12 @@
+parameters:
+    lp_factory.twig_extension.routing.class: LpFactory\Bundle\NestedSetRoutingBundle\Twig\RoutingExtension
+
+services:
+    lp_factory.twig_extension.routing:
+        class: %lp_factory.twig_extension.routing.class%
+        arguments:
+            - @lp_factory.routing.generator
+            - @lp_factory.route_configuration.chain
+        public: false
+        tags:
+            - { name: twig.extension }
