@@ -141,24 +141,6 @@ class PageRepository extends NestedTreeRepository implements NestedSetRoutingPag
     }
 
     /**
-     * @var array
-     */
-    protected $cachedPaths = array();
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCachedPath(NestedSetRoutingPageInterface $page)
-    {
-        $pageId = $page->getId();
-        if (isset($this->cachedPaths[$pageId])) {
-            return $this->cachedPaths[$pageId];
-        }
-
-        return $this->cachedPaths[$pageId] = $this->getPath($page);
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getSingleRootNode()

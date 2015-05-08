@@ -33,13 +33,14 @@ interface NestedSetRoutingPageRepositoryInterface extends RepositoryInterface, O
     public function getPageInTree($slug, NestedSetRoutingPageInterface $root = null);
 
     /**
-     * Get a path from memory if available
+     * Get the path of page in the nested set
+     * You do not have to implement this method as your repository will extend NestedTreeRepository
      *
-     * @param NestedSetRoutingPageInterface $page
+     * @param NestedSetRoutingPageInterface $node
      *
      * @return array
      */
-    public function getCachedPath(NestedSetRoutingPageInterface $page);
+    public function getPath($node);
 
     /**
      * Get the root node of tree in single tree strategy

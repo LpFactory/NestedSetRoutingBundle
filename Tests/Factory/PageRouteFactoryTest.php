@@ -42,7 +42,7 @@ class PageRouteFactoryTest extends \PHPUnit_Framework_TestCase
                 'LpFactory\Bundle\NestedSetRoutingBundle\Model\Repository\NestedSetRoutingPageRepositoryInterface'
             );
         $repository
-            ->method('getCachedPath')
+            ->method('getPath')
             ->willReturn($repositoryResult);
         $repository
             ->method('find')

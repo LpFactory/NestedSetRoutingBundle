@@ -54,7 +54,7 @@ class PageRouteFactory implements PageRouteFactoryInterface
         AbstractPageRouteConfiguration $routeConfiguration,
         NestedSetRoutingPageInterface $page
     ) {
-        $path = $this->repository->getCachedPath($page);
+        $path = $this->repository->getPath($page);
         $pathInfo = $this->buildUrlFromPath($path);
 
         $route = new Route();
