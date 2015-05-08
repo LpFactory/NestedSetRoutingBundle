@@ -8,7 +8,7 @@ Add the bundle as a requirement in your composer.json :
 ``` json
 {
     "require": {
-        "lpfactory/nested-set-routing-bundle": "~0.1"
+        "lpfactory/nested-set-routing-bundle": "~0.2"
     }
 }
 ```
