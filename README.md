@@ -3,7 +3,7 @@ NestedSetRoutingBundle
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/LpFactory/NestedSetRoutingBundle/build-status/master)
+[![Build Status](https://travis-ci.org/LpFactory/NestedSetRoutingBundle.svg?branch=master)](https://travis-ci.org/LpFactory/NestedSetRoutingBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5fc430b7-2d79-4151-9f44-6b639012c697/mini.png)](https://insight.sensiolabs.com/projects/5fc430b7-2d79-4151-9f44-6b639012c697)
 
 Cmf routing provider for Doctrine Nested Set Behavior.
