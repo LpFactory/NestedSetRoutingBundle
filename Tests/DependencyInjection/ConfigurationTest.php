@@ -26,10 +26,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testGetConfigTreeBuilder()
     {
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array());
+        $config = $processor->processConfiguration(new Configuration(), array(array('repository' => 'test')));
         $this->assertEquals(
             $config,
             array(
+                'repository' => 'test',
                 'routes' => array()
             )
         );
@@ -45,6 +46,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(), array(
             array(
+                'repository' => 'test',
                 'routes' => $routeConfig
             )
         ));

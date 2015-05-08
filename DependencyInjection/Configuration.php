@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
+                ->scalarNode('repository')->isRequired()->end()
                 ->arrayNode('routes')
                     ->useAttributeAsKey('name')
                     ->prototype('array')

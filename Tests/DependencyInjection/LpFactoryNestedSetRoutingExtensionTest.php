@@ -29,9 +29,21 @@ class LpFactoryNestedSetRoutingExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLoad()
     {
         $container = $this->createContainerFromFile('simple_load');
+
+        // Routes configuration loaded
         $this->assertEquals(
             2,
             count($container->findDefinition('lp_factory.route_configuration.chain')->getMethodCalls())
+        );
+
+        // Page repository configured
+        $this->assertEquals(
+            'mybundle.repository.page',
+            $container->findDefinition('lp_factory.route_factory')->getArgument(0)->__toString()
+        );
+        $this->assertEquals(
+            'mybundle.repository.page',
+            $container->findDefinition('lp_factory.route_strategy.abstract')->getArgument(0)->__toString()
         );
     }
 
