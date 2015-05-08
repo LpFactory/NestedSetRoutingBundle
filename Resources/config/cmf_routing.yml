@@ -28,16 +28,16 @@ services:
     lp_factory.route_provider:
         class: %lp_factory.route_provider.class%
         arguments:
-            - @lp_factory.route_factory
+            - # Route factory
             - @lp_factory.routing.satinizer.chain
             - @lp_factory.route_configuration.chain
-            - @lp_factory.route_strategy.single_tree
+            - # Tree strategy
 
     lp_factory.route_factory:
         class: %lp_factory.route_factory.class%
         arguments:
             - # Page repository
-            - @lp_factory.route_strategy.single_tree
+            - # Tree strategy
 
     lp_factory.route_configuration.chain:
         class: %lp_factory.route_configuration.chain.class%

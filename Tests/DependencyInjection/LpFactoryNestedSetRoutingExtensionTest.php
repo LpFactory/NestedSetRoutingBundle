@@ -45,6 +45,22 @@ class LpFactoryNestedSetRoutingExtensionTest extends \PHPUnit_Framework_TestCase
             'mybundle.repository.page',
             $container->findDefinition('lp_factory.route_strategy.abstract')->getArgument(0)->__toString()
         );
+
+        // Strategy configured
+        $this->assertEquals(
+            'lp_factory.route_strategy.single_tree',
+            $container->findDefinition('lp_factory.route_factory')->getArgument(1)->__toString()
+        );
+        $this->assertEquals(
+            'lp_factory.route_strategy.single_tree',
+            $container->findDefinition('lp_factory.route_provider')->getArgument(3)->__toString()
+        );
+
+        // Factory configured
+        $this->assertEquals(
+            'lp_factory.route_factory',
+            $container->findDefinition('lp_factory.route_provider')->getArgument(0)->__toString()
+        );
     }
 
     /**

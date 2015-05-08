@@ -31,6 +31,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             $config,
             array(
                 'repository' => 'test',
+                'service_ids' => array(
+                    'factory' => 'lp_factory.route_factory',
+                    'strategy' => 'lp_factory.route_strategy.single_tree'
+                ),
                 'routes' => array()
             )
         );

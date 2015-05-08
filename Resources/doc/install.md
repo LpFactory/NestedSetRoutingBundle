@@ -1,7 +1,7 @@
 Installation
 ============
 
-# Enable the bundle
+## Enable the bundle
 
 Add the bundle as a requirement in your composer.json :
 
@@ -23,7 +23,7 @@ $bundles = array(
 );
 ```
 
-# Configure dependencies
+## Configure dependencies
 
 In your `config.yml`, enable the cmf chain router and position the router provided by this bundle
 
@@ -48,7 +48,7 @@ stof_doctrine_extensions:
             sluggable: true
 ```
 
-# Create entity, repository and controller
+## Create entity, repository and controller
 
 Create a Page entity implementing the NestedSetRoutingPageInterface interface :
 
@@ -196,7 +196,7 @@ class PageController extends Controller
 }
 ```
 
-# Configure the bundle
+## Configure the bundle
 
 Configure the dynamic routes provided by the bundle
 

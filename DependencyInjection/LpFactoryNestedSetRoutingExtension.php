@@ -54,9 +54,18 @@ class LpFactoryNestedSetRoutingExtension extends Extension implements PrependExt
             $routeConfigurationChain->addMethodCall('add', array($alias, $routeConfiguration));
         }
 
-        // Add repository argument
-        $routeFactory = $container->findDefinition('lp_factory.route_factory');
+        $routeFactoryId = $config['service_ids']['factory'];
+        $treeStrategyId = $config['service_ids']['strategy'];
+
+        // Inject service route factory
+        $routeProvider = $container->findDefinition('lp_factory.route_provider');
+        $routeProvider->replaceArgument(0, new Reference($routeFactoryId));
+        $routeProvider->replaceArgument(3, new Reference($treeStrategyId));
+
+        // Add repository and strategy arguments
+        $routeFactory = $container->findDefinition($routeFactoryId);
         $routeFactory->replaceArgument(0, new Reference($config['repository']));
+        $routeFactory->replaceArgument(1, new Reference($treeStrategyId));
         $abstractStrategy = $container->findDefinition('lp_factory.route_strategy.abstract');
         $abstractStrategy->replaceArgument(0, new Reference($config['repository']));
     }
@@ -69,6 +78,19 @@ class LpFactoryNestedSetRoutingExtension extends Extension implements PrependExt
     public function prepend(ContainerBuilder $container)
     {
         // Enable the useful doctrine extension for this bundle
+        $this->prependStofDoctrineExtensionConfig($container);
+
+        // Enable the useful doctrine extension for this bundle
+        $this->prependCmfRoutingConfig($container);
+    }
+
+    /**
+     * Prepend configuration for stof doctrine extensions
+     *
+     * @param ContainerBuilder $container
+     */
+    protected function prependStofDoctrineExtensionConfig(ContainerBuilder $container)
+    {
         $container->prependExtensionConfig(
             'stof_doctrine_extensions',
             array(
@@ -80,8 +102,15 @@ class LpFactoryNestedSetRoutingExtension extends Extension implements PrependExt
                 )
             )
         );
+    }
 
-        // Enable the useful doctrine extension for this bundle
+    /**
+     * Prepend configuration for cmf routing
+     *
+     * @param ContainerBuilder $container
+     */
+    protected function prependCmfRoutingConfig(ContainerBuilder $container)
+    {
         $container->prependExtensionConfig(
             'cmf_routing',
             array(

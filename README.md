@@ -35,5 +35,6 @@ The following routes are valid :
 # Documentation
 
 * [Installation](Resources/doc/install.md)
+* [Reference](Resources/doc/reference.md)
 * [Multiple routes : view, edit, ...](Resources/doc/multiple_routes.md)
 * [Twig : generate path to page](Resources/doc/twig.md)
