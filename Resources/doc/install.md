@@ -116,8 +116,13 @@ Do not forget to generate the Entity class and implements the NestedSetRoutingPa
 Create a repository class for this Page entity implementing the NestedSetRoutingPageRepositoryInterface :
 
 ``` php
+<?php
+
+namespace MyBundle\Entity\Repository;
+
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use LpFactory\Bundle\NestedSetRoutingBundle\Model\Repository\NestedSetRoutingPageRepositoryInterface;
+use LpFactory\Bundle\NestedSetRoutingBundle\Model\NestedSetRoutingPageInterface;
 
 class PageRepository extends NestedTreeRepository implements NestedSetRoutingPageRepositoryInterface
 {

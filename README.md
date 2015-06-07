@@ -38,3 +38,7 @@ The following routes are valid :
 * [Reference](Resources/doc/reference.md)
 * [Multiple routes : view, edit, ...](Resources/doc/multiple_routes.md)
 * [Twig : generate path to page](Resources/doc/twig.md)
+
+# Coming soon
+
+* Multiple tree strategies : load page from different tree according to host
