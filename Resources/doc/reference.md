@@ -10,7 +10,7 @@ lp_factory_nested_set_routing:
     routes:
         edit:
             prefix: 'lpfactory_page_tree_edit_'
-            regex: '/(.+)\/edit$/'
+            regex: '/(.+)?\/edit$/'
             controller: 'LpFactoryCoreBundle:Page:edit'
             path: '%s/edit'
         view:

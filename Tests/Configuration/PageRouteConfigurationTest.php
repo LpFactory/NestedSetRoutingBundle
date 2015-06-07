@@ -86,7 +86,17 @@ class PageRouteConfigurationTest extends \PHPUnit_Framework_TestCase
                 '/child1/child2'
             ),
             array(
-                array('prefix' => 'test', 'controller' => 'test', 'regex' => '/(.+)\/edit$/'),
+                array('prefix' => 'test', 'controller' => 'test', 'regex' => null),
+                '/',
+                '/'
+            ),
+            array(
+                array('prefix' => 'test', 'controller' => 'test', 'regex' => '/(.+)?\/edit$/'),
+                '/edit',
+                '/'
+            ),
+            array(
+                array('prefix' => 'test', 'controller' => 'test', 'regex' => '/(.+)?\/edit$/'),
                 '/child1/child2/edit',
                 '/child1/child2'
             )

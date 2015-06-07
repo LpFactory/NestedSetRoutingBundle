@@ -54,7 +54,13 @@ abstract class AbstractPageRouteConfiguration
         }
 
         preg_match($this->getRegex(), $pathInfo, $matches);
-        return $matches[1];
+
+        if (isset($matches[1])) {
+            return $matches[1];
+        } else {
+            // Empty     then root node ("/" or "/edit)
+            return "/";
+        }
     }
 
     /**
